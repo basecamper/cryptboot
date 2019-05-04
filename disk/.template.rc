@@ -1,0 +1,18 @@
+NAME="name"
+
+ENC_DISK_FILE="/dev/disk/by-id/123"
+ENC_DISK_OFFSET=""
+ENC_DISK_SIZE=""
+
+KEYDISK_RC="./keychain.rc" # has a keychain to be mounted
+
+DEC_DISK_NAME="crypt_name"
+DEC_DISK_FILE="/dev/mapper/VolGroup-root"
+
+CRYPT_TYPE="plain"
+CRYPT_KEY_CIPHER="aes-xts-plain"
+CRYPT_KEY_SIZE="512" # b
+CRYPT_KEY_FILE="/dev/mapper/crypt_keychain" # or a file
+CRYPT_KEY_FILE_SIZE="" # B
+CRYPT_KEY_FILE_OFFSET="" # B
+

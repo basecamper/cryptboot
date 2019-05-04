@@ -1,0 +1,33 @@
+#!/usr/bin/ash
+
+run_hook() {
+
+
+    echo ",-----------------------------------------."
+    echo "|             special-encrypt             |"
+    echo "`-----------------------------------------´"
+
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    if [ -n "${cryptdevice}" ]; then
+        IFS=, read crypt_name crypt_disk <<EOF
+$cryptdevice
+EOF
+    fi
+
+    cd /crypt
+
+    echo "cryptdisk $crypt_name status: $status"
+    ./open_cryptdisk.sh "${crypt_name}.rc"
+
+    [ "$?" != "0" ] && echo "Error opening cryptodisk $crypt_name" && sleep 1 && return 1
+    
+    while [ ! -e "/dev/mapper/$crypt_disk" ]; do
+        echo "waiting for $crypt_disk"
+	sleep 1
+    done
+
+    root="/dev/mapper/$crypt_disk"
+}
+

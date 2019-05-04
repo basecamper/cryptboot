@@ -1,0 +1,14 @@
+NAME="name"
+GRUB_BOOT_DIR=".."
+
+CRYPT_DIR="."
+CRYPT_BOOT_DIR="${CRYPT_DIR}/boot_$NAME"
+
+CRYPT_DISK_DIR="${CRYPT_DIR}/disk"
+INJECT_FILES="${CRYPT_DISK_DIR}/key_keychain.bin"
+INJECT_FILES+=" ${CRYPT_DISK_DIR}/keychain.rc"
+INJECT_FILES+=" ${CRYPT_DISK_DIR}/name.rc"
+INJECT_FILES+=" ${CRYPT_DISK_DIR}/open_cryptdisk.sh"
+INJECT_FILES+=" ${CRYPT_DISK_DIR}/close_cryptdisk.sh"
+
+INITRD_CRYPT_DIR="./crypt"

@@ -1,0 +1,13 @@
+*.rc
+!.template.rc
+
+*.sh
+!patch_initramfs.sh
+!/disk/*.sh
+
+/boot_*
+/debug_*
+
+/disk/*.bin
+/disk/*.rc
+!/disk/.template.rc
