@@ -1,5 +1,4 @@
-*.rc
-!.template.rc
+.*
 
 *.sh
 !patch_initramfs.sh
@@ -8,6 +7,9 @@
 /boot_*
 /debug_*
 
-/disk/*.bin
+*.bin
+
+*.rc
 /disk/*.rc
+!.template.rc
 !/disk/.template.rc
