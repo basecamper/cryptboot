@@ -29,7 +29,7 @@ re_build() {
     echo "#  re-building -> $1.tmp"
     eval "find -mindepth 1 -printf '%P\0' | LANG=C bsdcpio -0 -o -H newc --quiet | gzip > $1.tmp"
     if [ "$?" ]; then
-        echo -e "#  success\n#  replacing $1.tmp -> $1"
+        echo -e "#  replacing $1.tmp -> $1"
         mv "$1.tmp" "$1"
     else
         echo "error rebuilding - did not replace $1"
@@ -59,7 +59,7 @@ run_inject()
     
         		extract_initrd $target
     
-        		add_files EX
+        		add_files
     
         		re_build $target
         		cd ..

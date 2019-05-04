@@ -5,7 +5,7 @@ run_hook() {
 
     echo ",-----------------------------------------."
     echo "|             special-encrypt             |"
-    echo "`-----------------------------------------´"
+    echo "'-----------------------------------------'"
 
     modprobe -a -q dm-crypt >/dev/null 2>&1
     [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
