@@ -1,5 +1,17 @@
 #!/bin/sh
-
+copy_current_files()
+{
+    cmd="cp /boot/initramfs-linux.img $CRYPT_BOOT_DIR && cp /boot/vmlinuz-linux $CRYPT_BOOT_DIR"
+    echo -e "$cmd"
+    echo -e "\nok? (enter)\n"
+    if [ "$1" != "noread" ]; then
+        read answ
+        if [ "$answ" == "" ]; then
+            echo "copying..."
+            eval "$cmd"
+        fi
+    fi
+}
 extract_initrd() {
     
     [ ! -e "${1}" ] && echo "$1 nonexisting ?" && return 1
@@ -46,7 +58,7 @@ run_inject()
         && src="./$1"
     
     source $src
-    
+    copy_current_files
     echo "# finding images in $CRYPT_BOOT_DIR"
     images=$(ls $CRYPT_BOOT_DIR | grep -e '\.img$\|\.img ')
     
